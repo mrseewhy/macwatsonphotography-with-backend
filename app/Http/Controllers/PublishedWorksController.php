@@ -33,33 +33,7 @@ class PublishedWorksController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    // public function store(Request $request)
-    // {
-    //     //
-    //     // dd($request->all());
-    //     $validated = $request->validate([
-    //         'title' => 'nullable|string|max:255',
-    //         'description' => 'nullable|string',
-    //         'type' => 'required|in:link,upload',
-    //         'link' => 'required_if:type,link|nullable|url|max:255|prohibited_if:type,upload',
-    //         'file' => 'required_if:type,upload|nullable|file|mimes:jpg,jpeg,png,gif|max:3072|prohibited_if:type,link',
-    //         'path' => 'nullable',
-    //     ]);
-    //     dd($validated);
-    //     $filePath = null;
-    //     if ($request->type === 'upload' && $request->hasFile('file')) {
-    //         $filePath = $request->file('file')->store('uploads/published', 'public');
-    //     }
-    //     $validated['path'] = $filePath ?? $validated['link'] ?? null;
-    //     unset($validated['file'], $validated['link']); // not needed in DB
 
-    //     Published::create($validated);
-
-    //     return redirect()->route('published.index');
-    // }
 
 
     public function store(Request $request)
@@ -183,47 +157,6 @@ class PublishedWorksController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    // public function update(Request $request, string $id)
-    // {
-    //     //
-    //     $published = Published::findOrFail($id);
-
-    //     $validated = $request->validate([
-    //         'title' => 'required|string|max:255',
-    //         'size' => 'required|string|max:255',
-    //         'range' => 'required|string|max:255',
-    //         'amount' => 'required|integer',
-    //         'type' => 'required|in:link,upload',
-    //         'link' => 'required_if:type,link|nullable|url|max:2048',
-    //         'file' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:3072',
-    //         'path' => 'nullable',
-    //     ]);
-
-    //     // Delete old file if switching type or uploading new one
-    //     if (
-    //         $published->type !== $request->type ||
-    //         ($request->type === 'upload' && $request->hasFile('file'))
-    //     ) {
-    //         Storage::disk('public')->delete($published->path);
-    //     }
-
-    //     // Determine new path
-    //     if ($request->type === 'upload' && $request->hasFile('file')) {
-    //         $validated['path'] = $request->file('file')->store('uploads/published', 'public');
-    //     } else {
-    //         $validated['path'] = $validated['link'] ?? $published->path;
-    //     }
-
-    //     // Remove extra fields not in DB
-    //     unset($validated['file'], $validated['link']);
-
-    //     $published->update($validated);
-
-    //     return to_route('published.index');
-    // }
 
     public function update(Request $request, string $id)
     {

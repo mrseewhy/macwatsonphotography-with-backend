@@ -2,54 +2,6 @@ import MyLayout from '@/layouts/my-layout';
 import { Head } from '@inertiajs/react';
 import React, { useEffect, useState } from 'react';
 
-// Define the type for a single card object
-interface CardData {
-    title: string;
-    price: string;
-    number: string;
-    inches: string;
-    imageUrl: string;
-}
-
-// Define the type for the cards data array
-const cardsData: CardData[] = [
-    {
-        title: 'It takes a village',
-        price: '$80',
-        number: '0-10',
-        inches: '12 by 15 inches',
-        imageUrl: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738433584/DSC_0170_rmtktc.jpg',
-    },
-    {
-        title: 'TIRED BODY, VIBRANT SOUL',
-        price: '$80',
-        number: '0-10',
-        inches: '12 by 15 inches',
-        imageUrl: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738433567/IMG_3816_lnuxnh.jpg',
-    },
-    {
-        title: 'HIGH FASHION',
-        price: '$80',
-        number: '0-10',
-        inches: '12 by 15 inches',
-        imageUrl: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738433582/DSC_0205_2_p0cdbi.jpg',
-    },
-    {
-        title: 'SOLACE',
-        price: '$80',
-        number: '0-10',
-        inches: '12 by 15 inches',
-        imageUrl: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738433564/DSC_0077_3_2_qigdlb.jpg',
-    },
-    {
-        title: 'OLOKUN',
-        price: '$80',
-        number: '0-10',
-        inches: '12 by 15 inches',
-        imageUrl: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738433569/_ARW7736_2_uxwe2k.jpg',
-    },
-];
-
 // Define the type for ImageModal props
 interface ImageModalProps {
     imageUrl: string | null; // imageUrl can be null when not selected
@@ -77,7 +29,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ imageUrl, onClose }) => {
     );
 };
 
-const Print: React.FC = () => {
+const Print: React.FC = ({ prints: cardsData }) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -155,16 +107,16 @@ const Print: React.FC = () => {
                             {cardsData.map((card, index) => (
                                 <div key={index} className="block">
                                     <div className="overflow-hidden rounded-lg bg-white shadow-md transition-shadow duration-300 hover:shadow-lg">
-                                        <div className="relative h-96 cursor-pointer" onClick={() => setSelectedImage(card.imageUrl)}>
-                                            <img src={card.imageUrl} alt={card.title} className="h-96 w-full object-cover" />
+                                        <div className="relative h-96 cursor-pointer" onClick={() => setSelectedImage(card.path)}>
+                                            <img src={card.path} alt={card.title} className="h-96 w-full object-cover" />
                                         </div>
                                         <div className="bg-gray-100 p-4">
                                             <h3 className="font-exo text-xl font-semibold text-black uppercase transition-colors duration-300 hover:text-gray-800">
                                                 {card.title}
                                             </h3>
-                                            <p className="font-lato text-black">{card.inches}</p>
-                                            <p className="font-lato text-black">{card.number}</p>
-                                            <p className="font-lato text-black">{card.price}</p>
+                                            <p className="font-lato text-black">{card.size}</p>
+                                            <p className="font-lato text-black">{card.range}</p>
+                                            <p className="font-lato text-black">${card.amount}</p>
                                         </div>
                                     </div>
                                 </div>

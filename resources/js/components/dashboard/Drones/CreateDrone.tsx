@@ -93,7 +93,7 @@ const CreateResourceForm = ({ setShowCreate }) => {
 
     return (
         <div className="mx-auto w-full max-w-xl rounded-lg bg-white p-8">
-            <h2 className="mb-8 text-2xl font-bold text-gray-800">Add New Image To Drone Shot</h2>
+            <h2 className="mb-8 text-2xl font-bold text-gray-800">Add Image To Drone Shot</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Title Field */}
                 <div>

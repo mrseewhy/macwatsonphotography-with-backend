@@ -94,18 +94,18 @@ const LandingTable: React.FC = ({ LandingImages }) => {
                     <table className="w-full min-w-[600px]">
                         <thead className="bg-black text-white">
                             <tr>
-                                <th className="px-4 py-3 text-left">Category</th>
-                                <th className="px-4 py-3 text-left">Size</th>
-                                <th className="px-4 py-3 text-left">Image</th>
-                                <th className="px-4 py-3 text-left">Action</th>
+                                <th className="w-1/6 px-4 py-3 text-left break-all">Category</th>
+                                <th className="w-3/6 px-4 py-3 text-left break-all">Size</th>
+                                <th className="w-1/6 px-4 py-3 text-left break-all">Image</th>
+                                <th className="w-1/6 px-4 py-3 text-left break-all">Action</th>
                             </tr>
                         </thead>
                         <tbody className="text-sm">
                             {images.map((image, index) => (
                                 <tr key={image.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-100'}>
-                                    <td className="px-4 py-3 capitalize">{image.category}</td>
-                                    <td className="px-4 py-3 capitalize">{image.size}</td>
-                                    <td className="px-4 py-3">
+                                    <td className="w-1/6 px-4 py-3 break-all capitalize">{image.category}</td>
+                                    <td className="w-3/6 px-4 py-3 break-all capitalize">{image.size}</td>
+                                    <td className="w-1/6 px-4 py-3 break-all">
                                         <img
                                             onClick={() => setSelectedImageId(image.id)}
                                             src={image.path}
@@ -113,7 +113,7 @@ const LandingTable: React.FC = ({ LandingImages }) => {
                                             className="h-24 w-24 cursor-pointer rounded-full"
                                         />
                                     </td>
-                                    <td className="px-4 py-3">
+                                    <td className="w-1/6 px-4 py-3 break-all">
                                         <button onClick={() => handleEdit(image.id)} className="mr-4 text-blue-600 hover:underline">
                                             Edit
                                         </button>

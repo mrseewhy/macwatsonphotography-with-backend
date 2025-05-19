@@ -2,15 +2,6 @@ import MyLayout from '@/layouts/my-layout';
 import { Head } from '@inertiajs/react';
 import React, { FC, KeyboardEvent, useEffect, useState } from 'react';
 
-// Define types for image data
-interface ImageItem {
-    id: number;
-    src: string;
-    alt: string;
-    category: string;
-    size: 'small' | 'medium' | 'large'; // Assuming these are the only possible sizes
-}
-
 // Define props for ImageSkeleton component
 interface ImageSkeletonProps {
     className?: string;
@@ -21,118 +12,9 @@ const ImageSkeleton: FC<ImageSkeletonProps> = ({ className = '' }) => (
     <div className={`animate-pulse rounded-lg bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 ${className}`} />
 );
 
-const images: ImageItem[] = [
-    {
-        id: 1,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738367317/PRINTS_1_rioaiv.jpg',
-        alt: 'Image 1',
-        category: 'Portraits',
-        size: 'small',
-    },
-    {
-        id: 2,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738432434/dji_fly_20241119_142052_108_1732047499230_photo_x04pgu.jpg',
-        alt: 'Image 2',
-        category: 'Drone shots',
-        size: 'large',
-    },
-    {
-        id: 3,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/w_1000/q_auto/f_auto/v1738367306/PRINTS_2_iaatwf.jpg',
-        alt: 'Image 3',
-        category: 'Portraits',
-        size: 'small',
-    },
-    {
-        id: 4,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738367590/Image_07-01-2025_at_06.55_ukltnp.jpg',
-        alt: 'Image 3',
-        category: 'Portraits',
-        size: 'small',
-    },
-    {
-        id: 5,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738431629/DSC_0041_2_sosoeu.jpg',
-        alt: 'Image 4',
-        category: 'Stories',
-        size: 'small',
-    },
-    {
-        id: 6,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/w_1000/q_auto/f_auto/v1738367786/PRINTS_4_gkoiis.jpg',
-        alt: 'Image 5',
-        category: 'Portraits',
-        size: 'large',
-    },
-    // { id: 7, src: 'https://res.cloudinary.com/dvmobuvar/image/upload/w_1000/q_auto/f_auto/v1738367595/Image_10-12-2024_at_23.48_cnelfc.jpg', alt: 'Image 6', category: 'Drone shots', size: 'small' },
-    {
-        id: 8,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738366433/macwatson/twsdyvfwphntz3c40kvs.jpg',
-        alt: 'Image 6',
-        category: 'Portraits',
-        size: 'small',
-    },
-    {
-        id: 9,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738431620/DSC_0091_dxkmqt.jpg',
-        alt: 'Image 7',
-        category: 'Stories',
-        size: 'small',
-    },
-    {
-        id: 10,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738367589/Image_07-01-2025_at_06.58_vjeqtb.jpg',
-        alt: 'Image 8',
-        category: 'Portraits',
-        size: 'small',
-    },
-    {
-        id: 11,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738432433/dji_fly_20241120_180354_127_1732170382814_photo_giczxl.jpg',
-        alt: 'Image 9',
-        category: 'Drone shots',
-        size: 'small',
-    },
-    {
-        id: 12,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738432433/dji_fly_20241121_123650_141_1732466191209_photo_d7ehdf.jpg',
-        alt: 'Image 9',
-        category: 'Drone shots',
-        size: 'small',
-    },
-    {
-        id: 13,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738432431/dji_fly_20241120_153842_121_1732170544059_photo_2_g4xmit.jpg',
-        alt: 'Image 11',
-        category: 'Drone shots',
-        size: 'large',
-    },
-    {
-        id: 14,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738431619/_ARW7750_2_prghjn.jpg',
-        alt: 'Image 12',
-        category: 'Published works',
-        size: 'small',
-    },
-    {
-        id: 15,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738431612/DSC_0090_1_2_jwla2n.jpg',
-        alt: 'Image 12',
-        category: 'Published works',
-        size: 'small',
-    },
-    {
-        id: 16,
-        src: 'https://res.cloudinary.com/dvmobuvar/image/upload/v1738431611/IMG_3888_nexoiq.jpg',
-        alt: 'Image 12',
-        category: 'Stories',
-        size: 'small',
-    },
-];
+const categories: string[] = ['all', 'stories', 'published', 'portraits', 'drone-shots', 'prints'];
 
-const categories: string[] = ['all', 'Stories', 'Published works', 'Portraits', 'Drone shots', 'Prints'];
-
-const Home: FC = () => {
+const Home: FC = ({ images }) => {
     const [selectedImage, setSelectedImage] = useState<ImageItem | null>(null);
     const [filter, setFilter] = useState<string>('all');
     const [loading, setLoading] = useState<boolean>(true);
@@ -225,7 +107,7 @@ const Home: FC = () => {
                                 <button
                                     key={category}
                                     onClick={() => setFilter(category)}
-                                    className={`rounded-full px-4 py-2 whitespace-nowrap transition-all duration-300 ${
+                                    className={`rounded-full px-4 py-2 whitespace-nowrap capitalize transition-all duration-300 ${
                                         filter === category ? 'bg-black text-white shadow-lg' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                                     }`}
                                 >
@@ -248,8 +130,8 @@ const Home: FC = () => {
                                 {(loading || !loadedImages[image.id]) && <ImageSkeleton className="absolute inset-0" />}
                                 <div className="relative h-full w-full overflow-hidden rounded-lg">
                                     <img
-                                        src={image.src}
-                                        alt={image.alt}
+                                        src={image.path}
+                                        alt={`${image.id}`}
                                         className={`h-full w-full rounded-lg object-cover shadow-lg transition-all duration-500 group-hover:scale-105 ${
                                             loadedImages[image.id] ? 'opacity-100' : 'opacity-0'
                                         }`}
@@ -283,7 +165,7 @@ const Home: FC = () => {
                                 </span>
 
                                 <div className="relative flex h-[90vh] items-center justify-center">
-                                    <img src={selectedImage.src} alt={selectedImage.alt} className="h-full w-full rounded-lg object-cover" />
+                                    <img src={selectedImage.path} alt={`${selectedImage.alt}`} className="h-full w-full rounded-lg object-cover" />
                                 </div>
 
                                 <button

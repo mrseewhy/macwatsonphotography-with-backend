@@ -35,37 +35,7 @@ class PrintsController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    // public function store(Request $request)
-    // {
 
-    //     $validated = $request->validate([
-    //         'title' => 'required|string|max:255',
-    //         'size' => 'required|string|max:255',
-    //         'range' => 'required|string|max:255',
-    //         'amount' => 'required|integer',
-    //         'type' => 'required|in:link,upload',
-    //         'link' => 'required_if:type,link|nullable|url|max:2048',
-    //         'file' => 'required_if:type,upload|nullable|image|mimes:jpeg,jpg,png,gif,webp|max:3072',
-    //         'path' => 'nullable',
-    //     ]);
-
-    //     $filePath = null;
-
-    //     if ($request->type === 'upload' && $request->hasFile('file')) {
-    //         $filePath = $request->file('file')->store('uploads/prints', 'public');
-    //     }
-
-    //     $validated['path'] = $filePath ?? $validated['link'] ?? null;
-
-    //     unset($validated['file'], $validated['link']); // not needed in DB
-
-    //     Prints::create($validated);
-
-    //     return redirect()->route('prints.index');
-    // }
 
     public function store(Request $request)
     {
@@ -191,47 +161,7 @@ class PrintsController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    // public function update(Request $request, string $id)
-    // {
-    //     //
-    //     $print = Prints::findOrFail($id);
 
-    //     $validated = $request->validate([
-    // 'title' => 'required|string|max:255',
-    // 'size' => 'required|string|max:255',
-    // 'range' => 'required|string|max:255',
-    // 'amount' => 'required|integer',
-    //         'type' => 'required|in:link,upload',
-    //         'link' => 'required_if:type,link|nullable|url|max:2048',
-    //         'file' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:3072',
-    //         'path' => 'nullable',
-    //     ]);
-
-    //     // Delete old file if switching type or uploading new one
-    //     if (
-    //         $print->type !== $request->type ||
-    //         ($request->type === 'upload' && $request->hasFile('file'))
-    //     ) {
-    //         Storage::disk('public')->delete($print->path);
-    //     }
-
-    //     // Determine new path
-    //     if ($request->type === 'upload' && $request->hasFile('file')) {
-    //         $validated['path'] = $request->file('file')->store('uploads/prints', 'public');
-    //     } else {
-    //         $validated['path'] = $validated['link'] ?? $print->path;
-    //     }
-
-    //     // Remove extra fields not in DB
-    //     unset($validated['file'], $validated['link']);
-
-    //     $print->update($validated);
-
-    //     return to_route('prints.index');
-    // }
 
     public function update(Request $request, string $id)
     {

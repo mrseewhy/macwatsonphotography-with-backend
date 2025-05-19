@@ -108,17 +108,17 @@ const StoriesTable: React.FC<{ stories: StoryPagination }> = ({ stories }) => {
                     <table className="w-full min-w-[600px]">
                         <thead className="bg-black text-white">
                             <tr>
-                                <th className="px-4 py-3 text-left">Title</th>
-                                <th className="px-4 py-3 text-left">Description</th>
-                                <th className="px-4 py-3 text-left">Image</th>
-                                <th className="px-4 py-3 text-left">Action</th>
+                                <th className="w-1/6 px-4 py-3 text-left">Title</th>
+                                <th className="w-3/6 px-4 py-3 text-left">Description</th>
+                                <th className="w-1/6 px-4 py-3 text-left">Image</th>
+                                <th className="w-1/6 px-4 py-3 text-left">Action</th>
                             </tr>
                         </thead>
                         <tbody className="text-sm">
                             {stories.data.map((story, index) => (
                                 <tr key={story.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-100'}>
-                                    <td className="px-4 py-3">{story.title ?? 'No title'}</td>
-                                    <td className="px-4 py-3">
+                                    <td className="w-1/6 px-4 py-3 break-all">{story.title ?? 'No title'}</td>
+                                    <td className="w-3/6 px-4 py-3 break-all">
                                         {story.description ? (
                                             <>
                                                 {story.description.length > 50 && !expandedStoryIds.includes(story.id)
@@ -143,7 +143,7 @@ const StoriesTable: React.FC<{ stories: StoryPagination }> = ({ stories }) => {
                                             <span className="text-gray-500">No description</span>
                                         )}
                                     </td>
-                                    <td className="px-4 py-3">
+                                    <td className="w-1/6 px-4 py-3 break-all">
                                         <img
                                             onClick={() => setSelectedStoryId(story.id)}
                                             src={story.path}
@@ -151,7 +151,7 @@ const StoriesTable: React.FC<{ stories: StoryPagination }> = ({ stories }) => {
                                             className="h-24 w-24 cursor-pointer rounded-full"
                                         />
                                     </td>
-                                    <td className="px-4 py-3">
+                                    <td className="w-1/6 px-4 py-3 break-all">
                                         <button onClick={() => handleEdit(story.id)} className="mr-4 text-blue-600 hover:underline">
                                             Edit
                                         </button>

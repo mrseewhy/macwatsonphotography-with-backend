@@ -35,31 +35,8 @@ class PortraitsController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    // public function store(Request $request)
-    // {
-    //     //
-    //     $validated = $request->validate([
-    //         'title' => 'nullable|string|max:255',
-    //         'description' => 'nullable|string',
-    //         'type' => 'required|in:link,upload',
-    //         'link' => 'required_if:type,link|nullable|url|max:255|prohibited_if:type,upload',
-    //         'file' => 'required_if:type,upload|nullable|file|mimes:jpg,jpeg,png,gif|max:3072|prohibited_if:type,link',
-    //         'path' => 'nullable',
-    //     ]);
-    //     $filePath = null;
-    //     if ($request->type === 'upload' && $request->hasFile('file')) {
-    //         $filePath = $request->file('file')->store('uploads/portraits', 'public');
-    //     }
-    //     $validated['path'] = $filePath ?? $validated['link'] ?? null;
-    //     unset($validated['file'], $validated['link']); // not needed in DB
 
-    //     Portrait::create($validated);
 
-    //     return redirect()->route('portraits.index');
-    // }
 
     public function store(Request $request)
     {
@@ -183,37 +160,7 @@ class PortraitsController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    // public function update(Request $request, string $id)
-    // {
-    //     //
-    //     $portrait = Portrait::findOrFail($id);
-    //     $validated = $request->validate([
-    //         'title' => 'nullable|string|max:255',
-    //         'description' => 'nullable|string',
-    //         'type' => 'required|in:link,upload',
-    //         'link' => 'required_if:type,link|nullable|url|max:255|prohibited_if:type,upload',
-    //         'file' => 'nullable|file|mimes:jpg,jpeg,png,gif|max:3072|prohibited_if:type,link',
-    //         'path' => 'nullable',
-    //     ]);
 
-    //     if ($request->hasFile('file')) {
-    //         if ($portrait->path && Storage::disk('public')->exists($portrait->path)) {
-    //             Storage::disk('public')->delete($portrait->path);
-    //         }
-    //     }
-    //     $filePath = null;
-    //     if ($request->type === 'upload' && $request->hasFile('file')) {
-    //         $filePath = $request->file('file')->store('uploads/portraits', 'public');
-    //     }
-    //     $validated['path'] = $filePath ?? $validated['link'] ?? $portrait->path ?? null;
-    //     unset($validated['file'], $validated['link']); // not needed in DB
-
-    //     $portrait->update($validated);
-    //     return redirect()->route('portraits.index');
-    // }
 
     public function update(Request $request, string $id)
     {

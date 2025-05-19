@@ -33,7 +33,7 @@
 
     <title inertia>{{ config('app.name', 'Macwatson Photography') }}</title>
 
-    <link rel="icon" type="image/x-icon" href="./fav.png">
+    <link rel="icon" type="image/x-icon" href="{{ asset('fav.png') }}">
 
     <meta name="description" content="Macwatson Photography, world class Photography from lagos to the world">
     <meta name="author" content="Bigyard Digital">

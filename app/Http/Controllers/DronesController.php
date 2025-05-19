@@ -35,31 +35,6 @@ class DronesController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    // public function store(Request $request)
-    // {
-    //     //
-    //     $validated = $request->validate([
-    //         'title' => 'nullable|string|max:255',
-    //         'description' => 'nullable|string',
-    //         'type' => 'required|in:link,upload',
-    //         'link' => 'required_if:type,link|nullable|url|max:255|prohibited_if:type,upload',
-    //         'file' => 'required_if:type,upload|nullable|file|mimes:jpg,jpeg,png,gif|max:3072|prohibited_if:type,link',
-    //         'path' => 'nullable',
-    //     ]);
-    //     $filePath = null;
-    //     if ($request->type === 'upload' && $request->hasFile('file')) {
-    //         $filePath = $request->file('file')->store('uploads/drones', 'public');
-    //     }
-    //     $validated['path'] = $filePath ?? $validated['link'] ?? null;
-    //     unset($validated['file'], $validated['link']); // not needed in DB
-
-    //     Drones::create($validated);
-
-    //     return redirect()->route('drones.index');
-    // }
 
     public function store(Request $request)
     {
@@ -183,72 +158,7 @@ class DronesController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    // public function update(Request $request, string $id)
-    // {
-    //     //
-    //     $drones = Drones::findOrFail($id);
-    //     $validated = $request->validate([
-    //         'title' => 'nullable|string|max:255',
-    //         'description' => 'nullable|string',
-    //         'type' => 'required|in:link,upload',
-    //         'link' => 'required_if:type,link|nullable|url|max:255|prohibited_if:type,upload',
-    //         'file' => 'nullable|file|mimes:jpg,jpeg,png,gif|max:3072|prohibited_if:type,link',
-    //         'path' => 'nullable',
-    //     ]);
 
-    //     if ($request->hasFile('file')) {
-    //         if ($drones->path && Storage::disk('public')->exists($drones->path)) {
-    //             Storage::disk('public')->delete($drones->path);
-    //         }
-    //     }
-    //     $filePath = null;
-    //     if ($request->type === 'upload' && $request->hasFile('file')) {
-    //         $filePath = $request->file('file')->store('uploads/drones', 'public');
-    //     }
-    //     $validated['path'] = $filePath ?? $validated['link'] ?? $drones->path ?? null;
-    //     unset($validated['file'], $validated['link']); // not needed in DB
-
-    //     $drones->update($validated);
-    //     return redirect()->route('drones.index');
-    // }
-
-    // public function update(Request $request, string $id)
-    // {
-    //     $drones = Drones::findOrFail($id);
-
-    //     $validated = $request->validate([
-    //         'title' => 'nullable|string|max:255',
-    //         'description' => 'nullable|string',
-    //         'type' => 'required|in:link,upload',
-    //         'link' => 'required_if:type,link|nullable|url|max:255|prohibited_if:type,upload',
-    //         'file' => 'nullable|file|mimes:jpg,jpeg,png,gif|max:3072|prohibited_if:type,link',
-    //     ]);
-
-    //     $filePath = $drones->path; // Start with existing path
-
-    //     if ($request->type === 'upload' && $request->hasFile('file')) {
-    //         // Delete old image if exists
-    //         if ($drones->path && Storage::disk('public')->exists($drones->path)) {
-    //             Storage::disk('public')->delete($drones->path);
-    //         }
-
-    //         // Upload new image
-    //         $filePath = $request->file('file')->store('uploads/drones', 'public');
-    //     } elseif ($request->type === 'link') {
-    //         $filePath = $validated['link'];
-    //     }
-
-    //     $validated['path'] = $filePath;
-
-    //     unset($validated['file'], $validated['link']);
-
-    //     $drones->update($validated);
-
-    //     return redirect()->route('drones.index');
-    // }
 
     public function update(Request $request, string $id)
     {

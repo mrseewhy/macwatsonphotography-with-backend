@@ -116,7 +116,7 @@ const PrintsTable: React.FC = ({ allPrints }) => {
                             <tr>
                                 <th className="px-4 py-3 text-left">Title</th>
                                 <th className="px-4 py-3 text-left">Size</th>
-                                <th className="px-4 py-3 text-left">Rang</th>
+                                <th className="px-4 py-3 text-left">Range | Number </th>
                                 <th className="px-4 py-3 text-left">Amount</th>
                                 <th className="px-4 py-3 text-left">Type</th>
                                 <th className="px-4 py-3 text-left">Image</th>

@@ -109,7 +109,7 @@ const ModifiedResourceForm = ({ setShowCreate }) => {
 
     return (
         <div className="mx-auto w-full max-w-xl rounded-lg bg-white p-8">
-            <h2 className="mb-8 text-2xl font-bold text-gray-800">Add New Image To Prints</h2>
+            <h2 className="mb-8 text-2xl font-bold text-gray-800">Add Image To Prints</h2>
             <form onSubmit={handleSubmitForm} className="space-y-6">
                 {/* Title Field */}
                 <div>

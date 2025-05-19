@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Landing Page Images',
+        title: 'Landing Page',
         href: '/dashboard/landing',
     },
 ];

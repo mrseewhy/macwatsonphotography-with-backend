@@ -9,8 +9,8 @@ import { useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Drone Shots',
-        href: '/dashboard/drones',
+        title: 'Stories',
+        href: '/dashboard/stories',
     },
 ];
 

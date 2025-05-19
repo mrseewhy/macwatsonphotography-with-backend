@@ -35,32 +35,7 @@ class StoriesController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    // public function store(Request $request)
-    // {
-    //     //
-    //     // dd($request->all());
-    //     $validated = $request->validate([
-    //         'title' => 'nullable|string|max:255',
-    //         'description' => 'nullable|string',
-    //         'type' => 'required|in:link,upload',
-    //         'link' => 'required_if:type,link|nullable|url|max:255',
-    //         'file' => 'required_if:type,upload|nullable|file|mimes:jpg,jpeg,png,gif|max:3072',
-    //         'path' => 'nullable',
-    //     ]);
-    //     $filePath = null;
-    //     if ($request->type === 'upload' && $request->hasFile('file')) {
-    //         $filePath = $request->file('file')->store('uploads/stories', 'public');
-    //     }
-    //     $validated['path'] = $filePath ?? $validated['link'] ?? null;
-    //     unset($validated['file'], $validated['link']); // not needed in DB
 
-    //     Story::create($validated);
-
-    //     return redirect()->route('stories.index');
-    // }
 
     public function store(Request $request)
     {
@@ -184,50 +159,7 @@ class StoriesController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    // public function update(Request $request, string $id)
-    // {
-    //     //
-    //     $story = Story::findOrFail($id);
 
-    //     $validated = $request->validate([
-    //         'title' => 'nullable|string|max:255',
-    //         'description' => 'nullable|string',
-    //         'type' => 'required|in:link,upload',
-    //         'link' => 'required_if:type,link|nullable|url|max:255',
-    //         'file' => 'required_if:type,upload|nullable|file|mimes:jpg,jpeg,png,gif|max:3072',
-    //     ]);
-
-    //     // Delete old file if new one is uploaded or type is changed
-    //     if (
-    //         $story->type !== $request->type ||
-    //         ($request->type === 'upload' && $request->hasFile('file'))
-    //     ) {
-    //         if ($story->path && Storage::disk('public')->exists($story->path)) {
-    //             Storage::disk('public')->delete($story->path);
-    //         }
-    //     }
-
-    //     // Store new file or assign new link
-    //     if ($request->type === 'upload' && $request->hasFile('file')) {
-    //         $validated['path'] = $request->file('file')->store('uploads/stories', 'public');
-    //     } elseif ($request->type === 'link') {
-    //         $validated['path'] = $validated['link'];
-    //     } else {
-    //         // Keep existing path if nothing changed
-    //         $validated['path'] = $story->path;
-    //     }
-
-    //     // Remove unused fields
-    //     unset($validated['file'], $validated['link']);
-
-    //     $story->update($validated);
-
-
-    //     return to_route('stories.index');
-    // }
 
 
     public function update(Request $request, string $id)
