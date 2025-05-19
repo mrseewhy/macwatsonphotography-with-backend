@@ -21,7 +21,7 @@ const About: () => JSX.Element = () => {
                         <div className="flex-1">
                             {/* Image element */}
                             <img
-                                src="/images/1.JPG" // Replace with your image path
+                                src="/images/11.jpg" // Replace with your image path
                                 alt="MacWatson" // Alt text for accessibility
                                 className="h-auto w-full rounded-lg shadow-lg" // Styling classes
                             />

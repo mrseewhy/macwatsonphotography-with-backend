@@ -16,7 +16,7 @@ const Contact: React.FC = () => {
                         {/* Image on the Left (Top on Mobile) */}
                         <div className="flex-1">
                             <img
-                                src="/images/1.JPG" // Replace with your image path
+                                src="/images/11.jpg" // Replace with your image path
                                 alt="MacWatson"
                                 className="h-auto w-full rounded-lg shadow-lg"
                             />
